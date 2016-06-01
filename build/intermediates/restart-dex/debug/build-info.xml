@@ -4,31 +4,36 @@
     api-level="23"
     density="xhdpi"
     format="7"
-    timestamp="106905606301285" >
+    timestamp="115597295538666" >
 
     <task
         name="javac"
-        duration="131" />
+        duration="142" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="21" />
+        duration="25" />
     <task
         name="verifier"
-        duration="3" />
+        duration="5" />
 
     <artifact
         location="C:\Users\Jcama\AndroidStudioProjects\Search\openCVTutorial3CameraControl\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
         type="DEX" />
 
-    <build timestamp="106519152830525" >
+    <build timestamp="114014331959710" >
         <artifact
             location="C:\Users\Jcama\AndroidStudioProjects\Search\openCVTutorial3CameraControl\build\outputs\apk\openCVTutorial3CameraControl-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="106905606301285" >
+    <build timestamp="114571183068951" >
+        <artifact
+            location="C:\Users\Jcama\AndroidStudioProjects\Search\openCVTutorial3CameraControl\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build timestamp="115597295538666" >
         <artifact
             location="C:\Users\Jcama\AndroidStudioProjects\Search\openCVTutorial3CameraControl\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
             type="DEX" />

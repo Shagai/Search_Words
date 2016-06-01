@@ -22,6 +22,7 @@ import org.opencv.video.Video;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,7 +48,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
     private Mat prevImg = null;
     private MatOfPoint2f prevFeatures = new MatOfPoint2f();
 
-    private String word = "PATATA";
+    private String[] words = null;
 
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -84,6 +85,9 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 
         mOpenCvCameraView.setCvCameraViewListener(this);
+
+        Intent intent = getIntent();
+        this.words = intent.getStringExtra(StartActivity.EXTRA_MESSAGE).split("\n");
     }
 
     @Override
@@ -133,7 +137,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
             squares.add(quad);
             Imgproc.drawContours(rgba, squares, -1, new Scalar(0, 0, 255), 2);
             if (!det.isBusy()) {
-                DrawWord(rgba, squares.get(0), det.GetPosition());
+                for (int[] position : det.GetPositions())
+                DrawWord(rgba, squares.get(0), position);
             }
         }
 
@@ -147,7 +152,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
 
                 ImgParam param = new ImgParam();
                 param.SetImg(gray);
-                param.SetWord(this.word);
+                param.SetWords(this.words);
                 param.SetSquares(squares);
                 param.SetContext(getApplicationContext());
                 det.execute(param);

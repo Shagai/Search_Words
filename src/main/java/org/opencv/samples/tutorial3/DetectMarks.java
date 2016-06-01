@@ -22,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,19 +42,22 @@ public class DetectMarks extends AsyncTask<ImgParam, Void, Void> {
     protected String _path;
 
     //Position
-    private int[] position = null;
+    private List<int[]> positions = new ArrayList<>();
 
     public DetectMarks() {
 
     }
 
-    public int[] GetPosition(){
-        return this.position;
+    public List<int[]> GetPositions(){
+        return this.positions;
     }
 
     public Void doInBackground(ImgParam... params) {
+        String[] words = params[0].GetWords();
         String recognizedText = ReadLetters(params[0].GetImg(), params[0].GetSquares(), params[0].GetContext());
-        this.position = SearchWord(recognizedText, params[0].GetWord());
+        for (String word : words) {
+            this.positions.add(SearchWord(recognizedText, word));
+        }
         this.busy = false;
         return null;
     }

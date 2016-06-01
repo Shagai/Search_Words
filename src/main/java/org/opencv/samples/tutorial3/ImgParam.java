@@ -13,7 +13,7 @@ import java.util.List;
 public class ImgParam {
 
     private Mat img = null;
-    private String word = null;
+    private String[] words = null;
     private List<MatOfPoint> squares = null;
     private Context myContext = null;
 
@@ -24,8 +24,8 @@ public class ImgParam {
     public void SetImg(Mat img){ this.img = img;}
     public Mat GetImg(){return this.img;}
 
-    public void SetWord(String word){ this.word = word;}
-    public String GetWord(){return this.word;}
+    public void SetWords(String[] words){ this.words = words;}
+    public String[] GetWords(){return this.words;}
 
     public void SetSquares(List<MatOfPoint> squares){ this.squares = squares;}
     public List<MatOfPoint> GetSquares(){return this.squares;}

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Jcama\\AndroidStudioProjects\\Search\\openCVTutorial3CameraControl\\build\\intermediates\\res\\merged\\debug\\layout\\activity_start.xml",
+        "source": "C:\\Users\\Jcama\\AndroidStudioProjects\\Search\\openCVTutorial3CameraControl\\src\\main\\res\\layout\\activity_start.xml"
+    },
+    {
         "merged": "C:\\Users\\Jcama\\AndroidStudioProjects\\Search\\openCVTutorial3CameraControl\\build\\intermediates\\res\\merged\\debug\\layout\\tutorial3_surface_view.xml",
         "source": "C:\\Users\\Jcama\\AndroidStudioProjects\\Search\\openCVTutorial3CameraControl\\src\\main\\res\\layout\\tutorial3_surface_view.xml"
     },
