@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
 
     private MainView mOpenCvCameraView;
 
-    private DetectMarks     det = new DetectMarks();
+    private OCRSearch det = new OCRSearch();
     private int state = 0;
     private Mat prevImg = null;
     private MatOfPoint2f prevFeatures = new MatOfPoint2f();
