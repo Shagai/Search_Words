@@ -16,6 +16,8 @@ public class ImgParam {
     private String[] words = null;
     private List<MatOfPoint> squares = null;
     private Context myContext = null;
+    private String soup = null;
+    private boolean ocr = true;
 
     public ImgParam(){
 
@@ -32,4 +34,10 @@ public class ImgParam {
 
     public void SetContext(Context myContext){ this.myContext = myContext;}
     public Context GetContext(){return this.myContext;}
+
+    public void SetSoup(String words){ this.soup = words;}
+    public String GetSoup(){return this.soup;}
+
+    public void SetOCR(boolean ocr){this.ocr = ocr;}
+    public boolean GetOCR(){return this.ocr;}
 }

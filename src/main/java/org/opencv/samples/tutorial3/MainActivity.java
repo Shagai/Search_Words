@@ -49,6 +49,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
     private MatOfPoint2f prevFeatures = new MatOfPoint2f();
 
     private String[] words = null;
+    private boolean ocr = false;
+    private String soup = null;
 
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -88,6 +90,8 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
 
         Intent intent = getIntent();
         this.words = intent.getStringExtra(StartActivity.EXTRA_MESSAGE).split("\n");
+        this.ocr = intent.getBooleanExtra(StartActivity.EXTRA_BOOL, true);
+        if (!this.ocr) this.soup = intent.getStringExtra(StartActivity.EXTRA_SOUP);
     }
 
     @Override
@@ -138,7 +142,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
             Imgproc.drawContours(rgba, squares, -1, new Scalar(0, 0, 255), 2);
             if (!det.isBusy()) {
                 for (int[] position : det.GetPositions())
-                DrawWord(rgba, squares.get(0), position);
+                    DrawWord(rgba, squares.get(0), position);
             }
         }
 
@@ -155,6 +159,10 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
                 param.SetWords(this.words);
                 param.SetSquares(squares);
                 param.SetContext(getApplicationContext());
+                if(!this.ocr) {
+                    param.SetOCR(this.ocr);
+                    param.SetSoup(this.soup);
+                }
                 det.execute(param);
             }
         }

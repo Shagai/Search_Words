@@ -54,7 +54,13 @@ public class OCRSearch extends AsyncTask<ImgParam, Void, Void> {
 
     public Void doInBackground(ImgParam... params) {
         String[] words = params[0].GetWords();
-        String recognizedText = ReadLetters(params[0].GetImg(), params[0].GetSquares(), params[0].GetContext());
+        String recognizedText = null;
+        if (params[0].GetOCR()) {
+            recognizedText = ReadLetters(params[0].GetImg(), params[0].GetSquares(), params[0].GetContext());
+        }else {
+            recognizedText = params[0].GetSoup();
+        }
+
         for (String word : words) {
             this.positions.add(SearchWord(recognizedText, word));
         }
@@ -141,9 +147,14 @@ public class OCRSearch extends AsyncTask<ImgParam, Void, Void> {
         recognizedText = recognizedText.replace("¿", "");
         recognizedText = recognizedText.replace("...", "");
         recognizedText = recognizedText.replace(" ", "");
+        recognizedText = recognizedText.replace("'EÍ", "T");
         recognizedText = recognizedText.replace("\n\n", "\n");
         recognizedText = recognizedText.replace("'", "");
         recognizedText = recognizedText.replace("(¡", "G");
+        recognizedText = recognizedText.replace("—¡", "H");
+        recognizedText = recognizedText.replace("Í:L", "H");
+        recognizedText = recognizedText.replace("\n¡", "\n");
+        recognizedText = recognizedText.replace("\nJ)", "\n");
         Log.v(TAG, "Text: " + recognizedText);
 
         baseApi.end();
