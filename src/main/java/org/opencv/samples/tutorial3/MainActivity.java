@@ -272,16 +272,16 @@ public class MainActivity extends Activity implements CvCameraViewListener2, OnT
                                     point4.y - point1.y);
         int indexY = position[0]/13;
         int indexX = position[0]%13;
-        Point start = new Point(point1.x + indexX * xRelative.x/12 +
-                                indexY * yRelative.x/12,
-                                point1.y + indexX * xRelative.y/12 +
-                                indexY * yRelative.y/12);
+        Point start = new Point(point1.x + (indexX + 0.5) * xRelative.x/12 +
+                                (indexY + 0.5) * yRelative.x/12,
+                                point1.y + (indexX + 0.5) * xRelative.y/12 +
+                                (indexY + 0.5) * yRelative.y/12);
         indexY = position[position.length - 1]/13;
         indexX = position[position.length - 1]%13;
-        Point finish = new Point(point1.x + indexX * xRelative.x/12 +
-                                 indexY * yRelative.x/12,
+        Point finish = new Point(point1.x + (indexX + 0.5) * xRelative.x/12 +
+                                (indexY + 0.5) * yRelative.x/12,
                                  point1.y + (indexX + 0.5) * xRelative.y/12 +
-                                 indexY * yRelative.y/12);
+                                 (indexY + 0.5) * yRelative.y/12);
         Imgproc.line(rgba, start, finish, new Scalar(0, 0, 255), 10);
     }
 }
